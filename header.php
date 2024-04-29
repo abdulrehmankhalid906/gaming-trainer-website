@@ -3,12 +3,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <?php
-                    if(isset($_SESSION['name']))
-                    {
-                    ?>
-                    Hello! <b><?php echo $_SESSION['name'];?> </b>
-                    <?php
-                    }
+                 echo isset($_SESSION['name']) ? "Hello " . $_SESSION['name'] : "Hello Guest";
                 ?>
             </div>
         </div>

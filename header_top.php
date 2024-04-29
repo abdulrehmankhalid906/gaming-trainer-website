@@ -19,79 +19,75 @@
         </li>
 
         <li class="nav-item">
-        <?php
-          if(isset($_SESSION['name'])){
+          <?php
+          if (isset($_SESSION['name'])) {
           ?>
             <a class="nav-link" href="all_requests.php" id="bt-requests">Requests</a>
           <?php
-          }
-          else{
-            ?>
+          } else {
+          ?>
             <script>
-              $(document).ready(function(){
+              $(document).ready(function() {
                 $("#bt-requests").hide();
               });
             </script>
-            <?php
+          <?php
           }
-        ?>
+          ?>
         </li>
 
         <li class="nav-item">
-        <?php
-          if(isset($_SESSION['name'])){
+          <?php
+          if (isset($_SESSION['name'])) {
           ?>
             <a class="nav-link" href="post.php" id="bt-post">Post</a>
           <?php
-          }
-          else{
-            ?>
+          } else {
+          ?>
             <script>
-              $(document).ready(function(){
+              $(document).ready(function() {
                 $("#bt-post").hide();
               });
             </script>
-            <?php
+          <?php
           }
-        ?>
+          ?>
         </li>
 
         <li class="nav-item">
-        <?php
-          if(!isset($_SESSION['name'])){
+          <?php
+          if (!isset($_SESSION['name'])) {
           ?>
             <a class="nav-link" href="login.php" id="bt-login">Admin Login</a>
           <?php
-          }
-          else{
-            ?>
+          } else {
+          ?>
             <script>
-              $(document).ready(function(){
+              $(document).ready(function() {
                 $("#bt-login").hide();
               });
             </script>
-            <?php
+          <?php
           }
-        ?>
+          ?>
         </li>
 
         <li class="nav-item">
-        <?php
-          if(isset($_SESSION['name'])){
+          <?php
+          if (isset($_SESSION['name'])) {
           ?>
             <a class="nav-link" href="logout.php" id="bt-logout">Logout</a>
           <?php
-          }
-          else{
-            ?>
+          } else {
+          ?>
             <script>
-              $(document).ready(function(){
+              $(document).ready(function() {
                 $("#bt-logout").hide();
               });
             </script>
-            <?php
+          <?php
           }
-        ?>
+          ?>
         </li>
       </ul>
     </div>

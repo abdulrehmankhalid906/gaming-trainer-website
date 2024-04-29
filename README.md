@@ -13,7 +13,7 @@ HTML/CSS, Bootstrap, Jquery, CorePHP, MySQL.
 Installation Process:
 
 Initial Requirements:
-1. PHP <= 7.3
+1. PHP <= 7.3 or higher version.
 2. Get clone.
 3. Import the database from "Db" directory.
 4. yourfolder/index.php

@@ -4,7 +4,7 @@ $username = "root";
 $password ="";
 $dbname ="expert";
 
-$con = mysqli_connect('localhost','root','','expert');
+$con = mysqli_connect($servername,$username,$password,$dbname);
 
 if(!$con)
 {

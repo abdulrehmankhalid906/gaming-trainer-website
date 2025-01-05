@@ -37,10 +37,10 @@ include 'header_top.php';
             <a href="add_download.php" class="btn btn-primary">Upload Link</a>
           </div>
 
-          <div class="mb-1">
+          <!-- <div class="mb-1">
             <label class="form-label">Game Picture:</label>
             <input type="file" class="form-control" name="game_pic" required>
-          </div>
+          </div> -->
           
           <div class="mb-1">
             <label class="form-label" for="form1Example13">Game Name:</label>
@@ -55,12 +55,6 @@ include 'header_top.php';
           <div class="mb-1">
             <label class="form-label">Description:</label>
             <textarea class="form-control" rows="3" name="description" required></textarea>
-          </div>
-
-          <div class="mb-1">
-            <label class="form-label">Game Version:</label>
-            <input type="text" class="form-control" name="version" required>
-            <input type="hidden" class="form-control" name="trainer_id" value="<?php $a= rand(0,9999); echo $a;?>">
           </div>
           
           <div class="mb-1">

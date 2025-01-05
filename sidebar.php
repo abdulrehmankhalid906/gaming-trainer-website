@@ -67,7 +67,8 @@
                         <div class="card-body"><b>Trainer No:</b> <?php echo $res['trainer_id'];?></div>
                         <div class="row g-0">
                             <div class="col-md-4">
-                            <img src="<?php echo "logo/".$res['game_pic'];?>" class="img-fluid">
+                                <img src="logo/stronghold.jpg" class="img-fluid">
+                                <!-- <img src="<?php echo "logo/".$res['game_pic'];?>" class="img-fluid"> -->
                             </div>
                             <div class="col-md-8">
                             <div class="card-body">

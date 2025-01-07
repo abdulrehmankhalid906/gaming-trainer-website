@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><img src="logo/stronghold_hd.png" alt="Expert Here" height="60"><span style="font-family:calibery;  font-weight:52px;"> Expert Here<span></a>
+    <a class="navbar-brand" href="index.php"><img src="logo/logo.jpg" alt="Expert Here" height="60"><span style="font-family:calibery;  font-weight:52px;"> Expert Here<span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

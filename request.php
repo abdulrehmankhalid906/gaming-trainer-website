@@ -11,8 +11,8 @@ include ('dbconfig.php');
     <title>Request Trainer</title>
     <link rel="icon" type="image/s-icon" href="logo/stronghold_hd.png">
     <script src="https://kit.fontawesome.com/8594ef0287.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="jquery/jquery.min.js"></script>
   </head>
 <body>
 <?php
@@ -119,26 +119,14 @@ include ('dbconfig.php');
                 <th scope="col">Game</th>
                 <th scope="col">Version</th>
                 <th scope="col">Status</th>
-                <th scope="col" id="action">
-                  <?php
-                    if(isset($_SESSION['name']))
-                    {
+                <?php
+                  if(isset($_SESSION['name']))
+                  {
                     ?>
-                      <span>Action</span>
+                      <th scope="col">Action</th>
                     <?php
-                    }
-                    else
-                    {
-                      ?>
-                      <script>
-                        $(document).ready(function(){
-                          $("#action").hide();
-                        });
-                      </script>
-                      <?php
-                    }
-                  ?>
-                </th>
+                  }
+                ?>
               </tr>
             </thead>
               <?php
@@ -178,38 +166,29 @@ include ('dbconfig.php');
                             ?>
                           </td>
 
-                          <td id="action-edit">
-                            <?php
-                              if(isset($_SESSION['name']))
-                              {
-                                if($res['status']==0)
-                                {
-                                  echo '<p><a href="edit_status.php?id='.$res['id'].'&status=1">Pending</a></p>';
-                                }
-                                else if($res['status']==1)
-                                {
-                                  echo '<p><a href="edit_status.php?id='.$res['id'].'&status=0">Completed</a></p>';
-                                }
-                                else
-                                {
-                                  echo '<p><a href="edit_status.php?id='.$res['id'].'&status=2">Rejeted</a></p>';
-                                }
-                              }
-                              else
-                              {
-                                ?>
-                                <script>
-                                  $(document).ready(function(){
-                                  $("#action-edit").hide();
-                                  });
-                                </script>
+                          <?php
+                            if(isset($_SESSION['name']))
+                            {
+                              ?>
+                                <td>
+                                  <?php
+                                    if($res['status']==0)
+                                    {
+                                      echo '<p><a href="edit_status.php?id='.$res['id'].'&status=1">Pending</a></p>';
+                                    }
+                                    else if($res['status']==1)
+                                    {
+                                      echo '<p><a href="edit_status.php?id='.$res['id'].'&status=0">Completed</a></p>';
+                                    }
+                                    else
+                                    {
+                                      echo '<p><a href="edit_status.php?id='.$res['id'].'&status=2">Rejeted</a></p>';
+                                    }
+                                  ?>
+                                </td>
                               <?php
-                              }
-                            ?>
-                          </td>
-                          <td>
-                            
-                          </td>
+                            }
+                          ?>
                         </tr>
                       <tbody>
                     <?php
@@ -224,9 +203,8 @@ include ('dbconfig.php');
     </div>
   </div>
 </div>
-<?php
-  include "footer.php";
-?>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <?php
+    include "footer.php";
+  ?>
 </body>  
 </html>

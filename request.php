@@ -127,7 +127,8 @@ include ('dbconfig.php');
                     <?php
                   }
                 ?>
-              </tr>
+              </tr> 
+              <!-- comment -->
             </thead>
               <?php
                 $query = "select * from request";

@@ -2,8 +2,8 @@
 
 $servername = 'localhost';
 $username = 'gradavrd_school_sy';
-$password = 'gradavrd_expert';
-$dbname = '@jvdK3%yQ*U0';
+$password = '@jvdK3%yQ*U0';
+$dbname = 'gradavrd_expert';
 
 $con = mysqli_connect($servername,$username,$password,$dbname);
 

@@ -94,7 +94,7 @@
                                         if(isset($_SESSION['name']))
                                         {
                                             ?>
-                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-success">Delete</a>
+                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></a>
                                             <?php
                                         }
                                     ?>
@@ -196,7 +196,7 @@
                                         if(isset($_SESSION['name']))
                                         {
                                             ?>
-                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-success">Delete</a>
+                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></a>
                                             <?php
                                         }
                                     ?>
@@ -247,7 +247,7 @@
                                         if(isset($_SESSION['name']))
                                         {
                                             ?>
-                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-success">Delete</a>
+                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></a>
                                             <?php
                                         }
                                     ?>

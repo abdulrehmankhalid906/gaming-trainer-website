@@ -46,11 +46,10 @@ include('dbconfig.php');
                         Trainer Menu
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownUser3">
-                        <li><a class="dropdown-item" href="#Stronghold HD">Stronghold Crusader</a></li>
-                        <li><a class="dropdown-item" href="#Stronghold Crusader HD">Stronghold Crusader HD</a></li>
-                        <li><a class="dropdown-item" href="#Call Of Duty">Call of Duty</a><li>
-                        <li><a class="dropdown-item" href="#Smoke Attack">Smoke Attack</a><li>
-                        <li><a class="dropdown-item" href="#Jos Dream Organic Coffee"></a><li>
+                        <li><a class="dropdown-item" href="index.php#Stronghold">Stronghold</a></li>
+                        <li><a class="dropdown-item" href="index.php#Stronghold Crusader">Stronghold Crusader</a></li>
+                        <li><a class="dropdown-item" href="index.php#Stronghold Extreme">Stronghold Extreme</a></li>
+                        <li><a class="dropdown-item" href="index.php#Call Of Duty">Call of Duty</a><li>
                     </ul>
                 </li>
             </ul>

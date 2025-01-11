@@ -4,7 +4,7 @@ include ('dbconfig.php');
 if(isset($_POST['upload'])){
 
     /*Basic Info*/
-    $game_name = $_POST['game_name'];
+    $fk_game_id = $_POST['fk_game_id'];
     $description = $_POST['description'];
     $version = $_POST['version'];
     $trainer_id = rand(0,9999);
@@ -13,8 +13,8 @@ if(isset($_POST['upload'])){
     $upload = $_FILES['upload_file']['name'];
 
     /*Insert Query*/
-    $query = "INSERT INTO stronghold (game_name,description,version,upload_file,trainer_id)
-    VALUES ('$game_name','$description','$version','$upload','$trainer_id')";
+    $query = "INSERT INTO trainers (fk_game_id,description,version,upload_file,trainer_id)
+    VALUES ('$fk_game_id','$description','$version','$upload','$trainer_id')";
     $query_run = mysqli_query($con,$query);
 
     if($query_run){

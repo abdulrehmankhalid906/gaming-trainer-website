@@ -36,20 +36,26 @@ include 'header_top.php';
             <h2>Upload Trainer</h2>
             <a href="add_download.php" class="btn btn-primary">Upload Link</a>
           </div>
-
-          <!-- <div class="mb-1">
-            <label class="form-label">Game Picture:</label>
-            <input type="file" class="form-control" name="game_pic" required>
-          </div> -->
           
           <div class="mb-1">
             <label class="form-label" for="form1Example13">Game Name:</label>
-            <select class="form-control" name="game_name" required>
-              <option value="Stronghold HD">Stronghold HD</option>
-              <option value="Stronghold Crusader HD">Stronghold Crusader HD</option>
-              <option value="Call Of Duty">Call Of Duty</option>
-              <option value="Smoke Attack">Smoke Attack</option>
+            <select class="form-control" name="fk_game_id" required>
+              <?php
+                $query = "SELECT * FROM games";
+                $query_run = mysqli_query($con, $query);
+                while($res = mysqli_fetch_assoc($query_run))
+                {
+                  ?>
+                    <option value="<?php echo $res['id']; ?>"><?php echo $res['name']; ?></option>
+                  <?php
+                }
+              ?>
             </select>
+          </div>
+
+          <div class="mb-1">
+            <label class="form-label">Game Picture:</label>
+            <input type="text" class="form-control" name="version" required>
           </div>
 
           <div class="mb-1">

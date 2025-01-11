@@ -3,7 +3,7 @@ session_start();
 include ('dbconfig.php');
 
 $id = $_GET['id'];
-$query = "delete from stronghold where id=$id";
+$query = "delete from trainers where id=$id";
 unlink("data/".$id);
 
 $query=mysqli_query($con, $query);

@@ -38,7 +38,7 @@ include 'header_top.php';
           </div>
           
           <div class="mb-1">
-            <label class="form-label" for="form1Example13">Game Name:</label>
+            <label class="form-label" for="form1Example13">Game Name</label>
             <select class="form-control" name="fk_game_id" required>
               <?php
                 $query = "SELECT * FROM games";
@@ -54,17 +54,17 @@ include 'header_top.php';
           </div>
 
           <div class="mb-1">
-            <label class="form-label">Game Picture:</label>
+            <label class="form-label">Game Version</label>
             <input type="text" class="form-control" name="version" required>
           </div>
 
           <div class="mb-1">
-            <label class="form-label">Description:</label>
+            <label class="form-label">Description</label>
             <textarea class="form-control" rows="3" name="description" required></textarea>
           </div>
           
           <div class="mb-1">
-            <label class="form-label">Upload File:</label>
+            <label class="form-label">Upload File</label>
             <input type="file" class="form-control" name="upload_file" required>
           </div>
 

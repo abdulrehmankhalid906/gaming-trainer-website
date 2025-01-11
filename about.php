@@ -9,7 +9,7 @@ include('dbconfig.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Us</title>
-    <link rel="icon" type="image/s-icon" href="logo/stronghold_hd.png">
+    <link rel="icon" type="image/s-icon" href="favicon/expert.png">
     <script src="https://kit.fontawesome.com/8594ef0287.js" crossorigin="anonymous"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="jquery/jquery.min.js"></script>

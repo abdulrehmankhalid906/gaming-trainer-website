@@ -14,7 +14,7 @@ include('dbconfig.php');
   <script src="https://kit.fontawesome.com/8594ef0287.js" crossorigin="anonymous"></script>
   <script src="jquery/jquery.min.js"></script>
 
-  <link rel="icon" type="image/s-icon" href="logo/stronghold_hd.png">
+  <link rel="icon" type="image/s-icon" href="favicon/expert.png">
   <style>
     #back-to-top {
       position: fixed;

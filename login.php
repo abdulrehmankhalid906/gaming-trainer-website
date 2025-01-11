@@ -10,7 +10,7 @@ include ('dbconfig.php');
     <link rel="stylesheet" href="style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <title>Login</title>
-    <link rel="icon" type="image/s-icon" href="logo/stronghold_hd.png">
+    <link rel="icon" type="image/s-icon" href="favicon/expert.png">
 
 <style>
 .btn-success, .btn-danger{

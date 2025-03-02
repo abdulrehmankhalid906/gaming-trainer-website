@@ -113,10 +113,10 @@ include ('dbconfig.php');
         <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">#</th>
+                <!-- <th scope="col">#</th> -->
                 <th scope="col">Name</th>
-                <th scope="col">Game</th>
-                <th scope="col">Version</th>
+                <th scope="col">Game/Version</th>
+                <th scope="col">Remarks</th>
                 <th scope="col">Status</th>
                 <?php
                   if(isset($_SESSION['name']))
@@ -139,10 +139,11 @@ include ('dbconfig.php');
                     ?>
                       <tbody>
                         <tr>
-                          <td><?php echo $res['id'];?></td>
+                          <!-- <td><?php echo $res['id'];?></td> -->
                           <td><?php echo $res['name'];?></td>
-                          <td><?php echo $res['game_name'];?></td>
-                          <td><?php echo $res['game_ver'];?></td>
+                          <td><?php echo $res['game_name'];?>/<?php echo $res['game_ver'];?></td>
+                          <!-- <td><?php echo $res['game_ver'];?></td> -->
+                          <td><?php echo $res['remarks'] ?? 'N/A';?></td>
                           <td>
                             <?php
                               if($res['status']==0)

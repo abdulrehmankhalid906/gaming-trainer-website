@@ -18,6 +18,6 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: "./experthere.grademaster.site/"
-        # timeout: 60000
+        timeout: 60000
         exclude: |
           **/.github*

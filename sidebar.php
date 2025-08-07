@@ -17,8 +17,8 @@
                     </li>
                     <li>
                         <a href="request.php" class="nav-link py-3 px-2" data-bs-toggle="tooltip" title="Request Trainer" data-bs-placement="right" data-bs-original-title="Requests">
-                        <i class="fa-solid fa-square-plus"></i>
-                        Request Trainer
+                            <i class="fa-solid fa-square-plus"></i>
+                            Request Trainer
                         </a>
                     </li>
                     <li>
@@ -30,8 +30,7 @@
                             <li><a class="dropdown-item" href="#Stronghold">Stronghold</a></li>
                             <li><a class="dropdown-item" href="#Stronghold Crusader">Stronghold Crusader</a></li>
                             <li><a class="dropdown-item" href="#Stronghold Extreme">Stronghold Extreme</a></li>
-                            <li><a class="dropdown-item" href="#Call Of Duty">Call of Duty</a><li>
-                            <!-- <li><a class="dropdown-item" href="#Smoke Attack">Smoke Attack</a><li> -->
+                            <li><a class="dropdown-item" href="#Call Of Duty">Call of Duty</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -55,213 +54,95 @@
 
             <?php include "swaper.php" ?>
 
-            <hr/>
+            <hr />
 
             <h1 id="trainers">All Trainers</h1>
             <hr>
 
-            <!--Stronghold-->
-            <h3 class="text-center" id="Stronghold">Stronghold HD- Trainers</h3>
             <?php
-               $query = "SELECT trainers.*, games.name as title, games.game_pic as image_url FROM trainers
-                INNER JOIN games ON trainers.fk_game_id = games.id WHERE trainers.fk_game_id = 1";
-                $display_query = mysqli_query($con,$query);
-                if(mysqli_num_rows($display_query)>0)
-                {
-                    while($res = mysqli_fetch_assoc($display_query))
-                    {
-                        ?>           
-                            <div class="card" style="max-width:1000px;">
-                                <div class="card-body"><b>Trainer No:</b> <?php echo $res['trainer_id'];?></div>
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="<?php echo "logo/".$res['image_url'];?>" class="img-fluid">
-                                    </div>
-                                    <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><?php echo $res['title'];?></h3>
-                                        <hr>
-                                        <h5 class="card-title"><?php echo $res['version'];?></h5>
-                                        <p class="card-text"><?php echo $res['description'];?></p>
-                                        <p class="card-text"><small class="text-muted"><time class="timeago" datetime="<?php echo $res['upload_time'];?>"></time></small></p>
-                                    </div>
+            $query = "SELECT games.*, 
+                            trainers.id AS t_id, 
+                            trainers.trainer_id, 
+                            trainers.description, 
+                            trainers.version, 
+                            trainers.upload_file AS file, 
+                            trainers.upload_time,
+                            trainers.download_count
+                        FROM games 
+                        LEFT JOIN trainers ON games.id = trainers.fk_game_id 
+                        ORDER BY games.id ASC";
 
-                                    <div class="card-body">
-                                        <a href="<?php echo "data/".$res['upload_file'];?>" class="btn btn-success">
-                                            <i class="fa-sharp fa-solid fa-circle-down"></i> 
-                                        </a>
-                                    <?php
-                                        if(isset($_SESSION['name']))
-                                        {
-                                            ?>
-                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></a>
-                                            <?php
-                                        }
-                                    ?>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        <?php
-                    }
+            $result = mysqli_query($con, $query);
+            $games = [];
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                $games[$id]['game'] = $row['name'];
+                $games[$id]['game_pic'] = $row['game_pic'];
+
+                if (!is_null($row['trainer_id'])) {
+                    $games[$id]['trainers'][] = [
+                        't_id' => $row['t_id'],
+                        'trainer_id' => $row['trainer_id'],
+                        'description' => $row['description'],
+                        'version' => $row['version'],
+                        'file' => $row['file'],
+                        'upload_time' => $row['upload_time'],
+                        'download_count' => $row['download_count'],
+                    ];
                 }
-                else
-                {
-                    echo "No Trainer Found";
-                }
+            }
+
+            // Output loop
+            foreach ($games as $game) {
             ?>
-
-            <!-- Stronghold Crusader -->
-            <h3 class="text-center" id="Stronghold Crusader">Stronghold Crusader HD- Trainers</h3>
-            <?php
-                $query = "SELECT trainers.*, games.name as title, games.game_pic as image_url FROM trainers
-                INNER JOIN games ON trainers.fk_game_id = games.id WHERE trainers.fk_game_id = 2";
-
-                $display_query = mysqli_query($con,$query);
-                if(mysqli_num_rows($display_query)>0)
-                {
-                    while($res = mysqli_fetch_assoc($display_query))
-                    {
-                        ?>           
-                            <div class="card" style="max-width:1000px;">
-                                <div class="card-body"><b>Trainer No:</b> <?php echo $res['trainer_id'];?></div>
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="<?php echo "logo/".$res['image_url'];?>" class="img-fluid">
-                                    </div>
-                                    <div class="col-md-8">
+                <h3 class="text-center" id="<?php echo $game['game']; ?>">
+                    <?php echo $game['game'] . ' Trainers'; ?>
+                </h3>
+                <?php
+                if (!empty($game['trainers'])) {
+                    foreach ($game['trainers'] as $trainer) {
+                ?>
+                        <div class="card" style="max-width:1000px;">
+                            <div class="card-body d-flex justify-content-between">
+                                <div><b>Trainer No:</b> <?php echo $trainer['trainer_id']; ?></div>
+                                <div><b>Downloads:</b> <?php echo $trainer['download_count'] ?? 0 ?></div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="<?php echo "logo/" . $game['game_pic']; ?>" class="img-fluid">
+                                </div>
+                                <div class="col-md-8">
                                     <div class="card-body">
-                                        <h3 class="card-title"><?php echo $res['title'];?></h3>
+                                        <h3 class="card-title"><?php echo $game['game']; ?></h3>
                                         <hr>
-                                        <h5 class="card-title"><?php echo $res['version'];?></h5>
-                                        <p class="card-text"><?php echo $res['description'];?></p>
-                                        <p class="card-text"><small class="text-muted"><time class="timeago" datetime="<?php echo $res['upload_time'];?>"></time></small></p>
+                                        <h5 class="card-title"><?php echo $trainer['version']; ?></h5>
+                                        <p class="card-text"><?php echo $trainer['description']; ?></p>
+                                        <p class="card-text">
+                                            <small class="text-muted">
+                                                <time class="timeago" datetime="<?php echo $trainer['upload_time']; ?>"></time>
+                                            </small>
+                                        </p>
                                     </div>
-
                                     <div class="card-body">
-                                        <a href="<?php echo "data/".$res['upload_file'];?>" class="btn btn-success">
-                                            <i class="fa-sharp fa-solid fa-circle-down"></i> 
+                                        <a href="download_count.php?file=<?php echo urlencode($trainer['file']); ?>&id=<?php echo $trainer['t_id']; ?>" class="btn btn-success">
+                                            <i class="fa-sharp fa-solid fa-circle-down"></i>
                                         </a>
-                                    <?php
-                                        if(isset($_SESSION['name'])){
-                                        ?>
-                                            <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></a>
-                                        <?php
-                                        }
-                                    ?>
+                                        <?php if (isset($_SESSION['name'])): ?>
+                                            <a href="delete.php?id=<?php echo $trainer['t_id']; ?>" class="btn btn-danger">
+                                                <i class="fa-sharp fa-solid fa-trash"></i>
+                                            </a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
-                                </div>
                             </div>
-                        <?php
-                    }
-                }
-                else
-                {
-                    echo "No Trainer Found";
-                }
-            ?>
-
-            <!-- Stronghold Extreme -->
-            <h3 class="text-center" id="Stronghold Extreme">Stronghold Extreme HD- Trainers</h3>
+                        </div>
             <?php
-               $query = "SELECT trainers.*, games.name as title, games.game_pic as image_url FROM trainers
-                INNER JOIN games ON trainers.fk_game_id = games.id WHERE trainers.fk_game_id = 3";
-                $display_query = mysqli_query($con,$query);
-                if(mysqli_num_rows($display_query)>0)
-                {
-                    while($res = mysqli_fetch_assoc($display_query))
-                    {
-                        ?>           
-                            <div class="card" style="max-width:1000px;">
-                                <div class="card-body"><b>Trainer No:</b> <?php echo $res['trainer_id'];?></div>
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="<?php echo "logo/".$res['image_url'];?>" class="img-fluid">
-                                    </div>
-                                    <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><?php echo $res['title'];?></h3>
-                                        <hr>
-                                        <h5 class="card-title"><?php echo $res['version'];?></h5>
-                                        <p class="card-text"><?php echo $res['description'];?></p>
-                                        <p class="card-text"><small class="text-muted"><time class="timeago" datetime="<?php echo $res['upload_time'];?>"></time></small></p>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <a href="<?php echo "data/".$res['upload_file'];?>" class="btn btn-success">
-                                            <i class="fa-sharp fa-solid fa-circle-down"></i> 
-                                        </a>
-                                    <?php
-                                        if(isset($_SESSION['name']))
-                                        {
-                                            ?>
-                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></a>
-                                            <?php
-                                        }
-                                    ?>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        <?php
                     }
+                } else {
+                    echo "<p class='text-center'>No trainer found</p>";
                 }
-                else
-                {
-                    echo "No Trainer Found";
-                }
-            ?>
-
-            <!--Call Of Duty-->
-            <h3 class="text-center" id="Call Of Duty">Call Of Duty - Trainers</h3>
-            <?php
-                $query = "SELECT trainers.*, games.name as title, games.game_pic as image_url FROM trainers
-                INNER JOIN games ON trainers.fk_game_id = games.id WHERE trainers.fk_game_id = 4";
-                $display_query = mysqli_query($con,$query);
-                if(mysqli_num_rows($display_query)>0)
-                {
-                    while($res = mysqli_fetch_assoc($display_query))
-                    {
-                        ?>           
-                            <div class="card" style="max-width:1000px;">
-                                <div class="card-body"><b>Trainer No:</b> <?php echo $res['trainer_id'];?></div>
-                                <div class="row g-0">
-                                    <div class="col-md-4">
-                                    <img src="<?php echo "logo/".$res['image_url'];?>" class="img-fluid">
-                                    </div>
-                                    <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><?php echo $res['title'];?></h3>
-                                        <hr>
-                                        <h5 class="card-title"><?php echo $res['version'];?></h5>
-                                        <p class="card-text"><?php echo $res['description'];?></p>
-                                        <p class="card-text"><small class="text-muted"><time class="timeago" datetime="<?php echo $res['upload_time'];?>"></time></small></p>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <a href="<?php echo "data/".$res['upload_file'];?>" class="btn btn-success">
-                                        <i class="fa-sharp fa-solid fa-circle-down"></i> 
-                                    </a>
-                                    <?php
-                                        if(isset($_SESSION['name']))
-                                        {
-                                            ?>
-                                                <a href="delete.php?id=<?php echo $res['id']?>" id="bt_delete" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></a>
-                                            <?php
-                                        }
-                                    ?>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        <?php
-                    }
-                }
-                else
-                {
-                    echo "No Trainer Found";
-                }
+            }
             ?>
         </div>
     </div>

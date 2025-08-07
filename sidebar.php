@@ -4,7 +4,7 @@
             <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-left sticky-top">
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-left justify-content-between w-100 px-3 align-items-left">
                     <li class="nav-item">
-                        <a href="#" class="nav-link py-3 px-2" title="Home" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                        <a href="index.php" class="nav-link py-3 px-2" title="Home" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                             <i class="fa-solid fa-house"></i>
                             My Home
                         </a>
@@ -27,8 +27,9 @@
                             Trainer Menu
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownUser3">
-                            <li><a class="dropdown-item" href="#Stronghold">Stronghold</a></li>
-                            <li><a class="dropdown-item" href="#Stronghold Crusader">Stronghold Crusader</a></li>
+                            <li><a class="dropdown-item" href="#Stronghold HD">Stronghold</a></li>
+                            <li><a class="dropdown-item" href="#Stronghold Crusader HD">Stronghold Crusader</a></li>
+                            <li><a class="dropdown-item" href="#Stronghold Crusader Definitive Edition">Stronghold Crusader DE</a></li>
                             <li><a class="dropdown-item" href="#Stronghold Extreme">Stronghold Extreme</a></li>
                             <li><a class="dropdown-item" href="#Call Of Duty">Call of Duty</a></li>
                         </ul>
